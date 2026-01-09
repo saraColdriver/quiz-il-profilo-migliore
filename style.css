@@ -1,0 +1,553 @@
+:root {
+    --primary-color: #B198AE;
+    --primary-color-dark: #a65b9d;
+    --c-black: #000000;
+    --c-white: #ffffff;
+    --c-white-dark: #c4c4c4;
+    --c-red: #dc3545;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--c-black);
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+h1 {
+    font-size: 25px !important;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--c-white);
+    padding-bottom: 20px;
+}
+
+h3 {
+    padding-bottom: 20px;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+strong {
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+}
+
+.question-container {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Carosello */
+.swiper {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 35px;
+}
+
+.swiper-pagination-progressbar-fill {
+    background-color: var(--c-red) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--c-white);
+    height: 100% !important;
+    top: 0 !important;
+    margin-top: 0 !important;
+    display: flex;
+    align-items: center;
+    background: transparent;
+}
+
+.swiper-button-next::after {
+    animation: bounce-pulse 1s ease-in-out infinite;
+    color: var(--c-red);
+    width: 50px;
+    height: 50px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+@keyframes bounce-pulse {
+
+    0%,
+    100% {
+        transform: translateX(0) scale(1);
+        color: rgba(220, 53, 69, 0.8);
+    }
+
+    50% {
+        transform: translateX(8px) scale(1.1);
+        color: var(--c-red);
+    }
+}
+
+/* Opzione selezionata e disabilitata */
+.option:has(input[type="radio"]:disabled:checked) {
+    background-color: var(--c-red);
+    border-color: var(--c-white);
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(220, 53, 69, 0.3);
+}
+
+.option:has(input[type="radio"]:disabled:checked) label {
+    color: var(--c-white);
+}
+
+/* Opzioni disabilitate */
+.option:has(input[type="radio"]:disabled) {
+    background-color: var(--c-white);
+    border-color: transparent;
+    cursor: default;
+    opacity: 0.8;
+}
+
+.option:has(input[type="radio"]:disabled) label {
+    color: var(--c-white-dark);
+    cursor: default;
+}
+
+.disabled-option {
+    pointer-events: none;
+}
+
+.disabled-option:not(:has(input:checked)) {
+    opacity: 0.3;
+}
+
+/* Input condivisi per Nome ed Email */
+#username,
+#useremail {
+    width: 100%;
+    max-width: 300px;
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--c-white-dark);
+    background-color: var(--c-white);
+    color: var(--c-black);
+    margin: 10px auto; /* Ho ridotto un po' il margine verticale per avvicinarli */
+    display: block;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#username::placeholder,
+#useremail::placeholder {
+    color: #898989;
+}
+
+#username:focus,
+#useremail:focus {
+    outline: none;
+    border-color: var(--c-red);
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+}
+
+/* Radio button */
+.option {
+    background-color: var(--c-white-dark);
+    padding: 16px 18px;
+    margin: 12px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid var(--c-white);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    position: relative;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.option:active {
+    transform: scale(0.98);
+}
+
+.option:has(input[type="radio"]:checked) {
+    background-color: var(--c-white);
+    border-color: #dc3545;
+    box-shadow: 0 0 15px rgba(220, 53, 69, 0.3);
+}
+
+.option input[type="radio"] {
+    margin-right: 12px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    accent-color: var(--c-red);
+    pointer-events: none;
+}
+
+.option label {
+    cursor: pointer;
+    font-size: 0.95rem;
+    user-select: none;
+    flex: 1;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+/* Bottoni */
+button {
+    background-color: var(--c-red);
+    color: #fff;
+    border: none;
+    padding: 14px 30px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+button.submitted {
+    background-color: #28a745;
+    cursor: default;
+}
+
+button.submitted::after {
+    content: " ✓";
+}
+
+button.modifica {
+    background-color: var(--c-white-dark);
+    color: var(--c-black);
+}
+
+button.modifica::after {
+    content: " ✏️";
+}
+
+/* Esito */
+#esito {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 10px 0px;
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 500px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInScale 0.6s ease forwards;
+}
+
+@keyframes fadeInScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#esito-wrapper,
+#eventi-wrapper {
+    transition: opacity 0.3s ease;
+}
+
+/* Eventi */
+.btn-eventi {
+    background-color: var(--c-white);
+    color: var(--c-black);
+    border: 2px solid var(--c-red);
+    padding: 14px 30px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    width: 100%;
+    max-width: 350px;
+    margin: 30px auto 0;
+    display: block;
+    opacity: 0;
+}
+
+.btn-eventi.visible {
+    animation: fadeInButton 1s ease forwards;
+}
+
+@keyframes fadeInButton {
+    to {
+        opacity: 1;
+    }
+}
+
+.btn-eventi:active {
+    transform: scale(0.98);
+}
+
+.eventi-dettagli {
+    background-color: var(--c-white);
+    border-radius: 15px;
+    padding: 20px 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeInScale 0.6s ease forwards;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.eventi-dettagli h3 {
+    color: var(--c-red);
+    font-size: 1.4rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--c-red);
+}
+
+.evento-item {
+    text-align: left;
+    padding: 15px 4px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.evento-item:last-child {
+    margin-bottom: 0;
+}
+
+.evento-item p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.evento-item strong {
+    font-size: 1rem;
+    color: var(--c-red);
+}
+
+.luogo {
+    padding-top: 12px;
+    font-size: 19px;
+}
+
+.a-luogo {
+    color: var(--primary-color-dark) !important;
+}
+
+.p-luogo {
+    padding-bottom: 10px;
+    border-bottom: 1px dotted var(--primary-color);
+}
+
+
+/* Media queries */
+
+/* Landscape mobile*/
+@media (max-height: 600px) and (orientation: landscape) {
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .option {
+        padding: 10px 15px;
+        margin: 8px 0;
+    }
+
+    button {
+        padding: 10px 25px;
+        margin-top: 15px;
+    }
+
+    #esito {
+        font-size: 1.2rem;
+        padding: 20px 15px;
+    }
+}
+
+/* xs sm */
+@media (max-width: 767.98px) {}
+
+/* md */
+@media (min-width: 768px) and (max-width: 991.98px) {}
+
+/*lg xl xxl */
+@media (min-width: 992px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .option {
+        padding: 18px 24px;
+    }
+
+    #esito {
+        font-size: 2rem;
+        padding: 45px 40px;
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    /* hover */
+    .option:has(input[type="radio"]:disabled):hover {
+        background-color: var(--c-white);
+        border-color: transparent;
+        transform: none;
+    }
+
+    .option:has(input[type="radio"]:disabled:checked):hover {
+        background-color: #1a1a1a;
+        border-color: var(--c-red);
+    }
+
+    .option:hover {
+        background-color: var(--c-red);
+        border-color: #fff;
+    }
+
+    button:hover:not(:disabled) {
+        background-color: #c82333;
+    }
+
+    button.modifica:hover:not(:disabled) {
+        background-color: var(--c-white-dark);
+    }
+
+    .btn-eventi:hover {
+        background-color: var(--c-red);
+        color: var(--c-white);
+        transform: scale(1.05);
+    }
+
+    .option:hover {
+        transform: translateX(5px);
+    }
+
+    button:hover:not(:disabled) {
+        transform: scale(1.05);
+    }
+
+}
+
+/* xs sm md */
+@media (max-width: 991.98px) {}
+
+/* md lg xl xxl */
+@media (min-width: 768px) {
+    .swiper-slide {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .option {
+        padding: 18px 22px;
+        margin: 14px 0;
+    }
+
+    .option label {
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 14px 35px;
+        font-size: 1.05rem;
+        width: auto;
+        min-width: 200px;
+    }
+
+    #esito {
+        font-size: 1.8rem;
+        padding: 40px 30px;
+    }
+
+    .container {
+        padding: 30px;
+    }
+}
